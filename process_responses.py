@@ -1,7 +1,7 @@
 # n8n proporciona los datos en la variable "items"
 datos = items[0]['json']  # Accedemos a los datos del primer elemento
 
-# Extraer respuestas con valores por defecto si no existen
+# Extraer respuestas con valores por defecto si no existenn
 respuestas = {
     "experiencia_general": datos.get('¿Cómo calificaría su experiencia general en nuestro hotel?', ""),
     "limpieza": datos.get('¿Qué tan satisfecho estuvo con la limpieza y comodidad de la habitación?', ""),
