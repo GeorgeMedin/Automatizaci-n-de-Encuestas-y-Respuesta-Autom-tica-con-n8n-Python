@@ -1,0 +1,21 @@
+<!--  n8n permite escribir los cuerpos de correo en html, esto facilita cierto dinamismo y personalizacion en los msj enviados a los usuarios-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta de Satisfacción</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6;">
+    <p>Estimado/a <strong>{{ $('On form submission').item.json.Nombre }}</strong> 😊,</p> <!-- Toma la variable nombre, la cual se almacena despues de que el usuario diligencia el campo de nombre en el formulario inicial -->
+    <p>Queremos agradecerte por tomarte el tiempo de completar nuestra encuesta de satisfacción. 📝✨ Tu opinión es muy importante para nosotros y nos ayuda a mejorar continuamente nuestros servicios. 📈💡</p>
+    <p> {{ $json.mensaje }} 🗣️💬 Estamos comprometidos en brindarte la mejor experiencia posible. 🚀</p> <!-- la variable json.mensaje es la respuesta de python al analizar la informacion-->
+    <p><strong>¡Gracias por confiar en nosotros! 🙌</strong></p>
+    <hr>
+    <p>Este correo es parte de una prueba que estoy realizando en <strong>n8n</strong> para automatizar procesos. ⚙️🤖 Si estás leyendo esto, significa que la automatización ha funcionado correctamente. 🎉✅</p>
+    <p>Estoy explorando y mejorando el uso de <strong>n8n</strong> para optimizar flujos de trabajo, así que cualquier comentario o sugerencia es bienvenido. 💡📧</p>
+    <p><strong>¡Gracias por ser parte de esta prueba! 🚀🙌</strong></p>
+    <hr>
+    <p>📢 Conéctate conmigo en LinkedIn: <a href="link" target="_blank">Perfil de contacto</a></p>
+</body>
+</html>
