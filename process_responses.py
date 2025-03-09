@@ -1,5 +1,5 @@
-# n8n proporciona los datos en la variable "items"
-datos = items[0]['json']  # Accedemos a los datos del primer elemento
+# obtenga los datos de la encuesta respondida por el cliente
+datos = items[0]['json'] 
 
 # Extraer respuestas con valores por defecto si no existenn
 respuestas = {
@@ -22,7 +22,7 @@ def generar_disculpa(respuestas):
         problemas.append("los servicios adicionales")
 
     if not problemas:
-        mensaje = "Gracias por su calificación. Seguiremos trabajando para brindarle la mejor experiencia."
+        mensaje = "Gracias por su calificación. Seguiremos trabajando para brindarle la mejor experiencia." #En caso de no obtener ninguna respuesta insatisfecha, simplemente agradezca en el mensaje
     else:
         mensaje = "Lamentamos que haya tenido problemas con "
         if len(problemas) == 1:
@@ -35,5 +35,5 @@ def generar_disculpa(respuestas):
 
     return [{"json": {"mensaje": mensaje}}]  # Retornar en el formato correcto
 
-# Retornar el mensaje en el formato que n8n espera
+# Retornar msj a n8n
 return generar_disculpa(respuestas)
