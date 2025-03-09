@@ -17,7 +17,7 @@ Este proyecto implementa un flujo en **n8n** para gestionar encuestas y responde
 ## 📂 Contenido del repositorio  
 📜 `n8n_flow.json` → Configuración del flujo en n8n.  
 🐍 `process_responses.py` → Script en Python que analiza respuestas y envía correos.  
-📊 `survey_data.xlsx` → Ejemplo de almacenamiento en Excel.  
+📊 `html_menssage.html` → Mensaje en html que se muestra en el correo electronico de respuesta.  
 
 ## 🔧 Configuración  
 1. Instalar **n8n** y configurar el flujo con el archivo `n8n_flow.json`.  
