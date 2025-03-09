@@ -1,0 +1,323 @@
+{
+  "name": "PRUEBA-ENCUESTASATISFACCION",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Encuesta de Satisfacción Hotel - Demo",
+        "formDescription": "Los datos recopilados en esta encuesta serán tratados con estricta confidencialidad y utilizados únicamente para los fines de esta prueba. Su información no será compartida con terceros ni utilizada para ningún otro propósito.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Correo Electronico ",
+              "fieldType": "email",
+              "placeholder": "(En la ejecución te llegará un correo de agradecimiento)",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "¿Cómo calificaría su experiencia general en nuestro hotel?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Muy satisfecho"
+                  },
+                  {
+                    "option": "Satisfecho"
+                  },
+                  {
+                    "option": "Ni satisfecho ni insatisfecho"
+                  },
+                  {
+                    "option": "Insatisfecho"
+                  },
+                  {
+                    "option": "Muy Insatisfecho"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "¿Qué tan satisfecho estuvo con la limpieza y comodidad de la habitación?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Muy satisfecho"
+                  },
+                  {
+                    "option": "Satisfecho"
+                  },
+                  {
+                    "option": "Ni satisfecho ni insatisfecho"
+                  },
+                  {
+                    "option": "Insatisfecho"
+                  },
+                  {
+                    "option": "Muy Insatisfecho"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "¿Cómo fue la atención del personal durante su estancia?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Excelente"
+                  },
+                  {
+                    "option": "Buena"
+                  },
+                  {
+                    "option": "Regular"
+                  },
+                  {
+                    "option": "Mala"
+                  },
+                  {
+                    "option": "Muy mala"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "¿Qué tan satisfecho estuvo con los servicios adicionales (restaurante, piscina, gimnasio, etc.)?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Muy satisfecho"
+                  },
+                  {
+                    "option": "Satisfecho"
+                  },
+                  {
+                    "option": "Ni satisfecho ni insatisfecho"
+                  },
+                  {
+                    "option": "Insatisfecho"
+                  },
+                  {
+                    "option": "Muy insatisfecho"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "¿Qué mejoras sugeriría para que su próxima estancia sea aún mejor?",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7a64f084-3c89-46a6-8fb5-587f4d475cb0",
+      "name": "On form submission",
+      "webhookId": "cd07914a-4b96-4ba1-a230-4b44d67315c8"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('On form submission').item.json['Correo Electronico '] }}",
+        "subject": "¡Gracias por tu respuesta! Nos ayudará a mejorar nuestros servicios.",
+        "message": "=<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Encuesta de Satisfacción</title>\n</head>\n<body style=\"font-family: Arial, sans-serif; line-height: 1.6;\">\n    <p>Estimado/a <strong>{{ $('On form submission').item.json.Nombre }}</strong> 😊,</p>\n    <p>Queremos agradecerte por tomarte el tiempo de completar nuestra encuesta de satisfacción. 📝✨ Tu opinión es muy importante para nosotros y nos ayuda a mejorar continuamente nuestros servicios. 📈💡</p>\n    <p> {{ $json.mensaje }} 🗣️💬 Estamos comprometidos en brindarte la mejor experiencia posible. 🚀</p>\n    <p><strong>¡Gracias por confiar en nosotros! 🙌</strong></p>\n    <hr>\n    <p>Este correo es parte de una prueba que estoy realizando en <strong>n8n</strong> para automatizar procesos. ⚙️🤖 Si estás leyendo esto, significa que la automatización ha funcionado correctamente. 🎉✅</p>\n    <p>Estoy explorando y mejorando el uso de <strong>n8n</strong> para optimizar flujos de trabajo, así que cualquier comentario o sugerencia es bienvenido. 💡📧</p>\n    <p><strong>¡Gracias por ser parte de esta prueba! 🚀🙌</strong></p>\n    <hr>\n    <p>📢 Conéctate conmigo en LinkedIn: <a href=\"https://www.linkedin.com/in/jorge-medina-rincon-5b7507237/\" target=\"_blank\">Jorge Medina Rincón</a></p>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        0
+      ],
+      "id": "0dea24a4-6e1d-4e69-b25a-bc6d75b6a17d",
+      "name": "Gmail",
+      "webhookId": "14fec58a-b334-4b94-9fdd-fc470e5cb0dc",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1MnDcZ0itbeK6XoF",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "# n8n proporciona los datos en la variable \"items\"\ndatos = items[0]['json']  # Accedemos a los datos del primer elemento\n\n# Extraer respuestas con valores por defecto si no existen\nrespuestas = {\n    \"experiencia_general\": datos.get('¿Cómo calificaría su experiencia general en nuestro hotel?', \"\"),\n    \"limpieza\": datos.get('¿Qué tan satisfecho estuvo con la limpieza y comodidad de la habitación?', \"\"),\n    \"personal\": datos.get('¿Cómo fue la atención del personal durante su estancia?', \"\"),\n    \"servicios\": datos.get('¿Qué tan satisfecho estuvo con los servicios adicionales (restaurante, piscina, gimnasio, etc.)?', \"\")\n}\n\ndef generar_disculpa(respuestas):\n    problemas = []\n\n    if respuestas[\"experiencia_general\"] in [\"Insatisfecho\", \"Muy insatisfecho\"]:\n        problemas.append(\"su experiencia general en nuestro hotel\")\n    if respuestas[\"limpieza\"] in [\"Insatisfecho\", \"Muy insatisfecho\"]:\n        problemas.append(\"la limpieza y comodidad de la habitación\")\n    if respuestas[\"personal\"] in [\"Mala\", \"Muy mala\"]:\n        problemas.append(\"la atención del personal\")\n    if respuestas[\"servicios\"] in [\"Insatisfecho\", \"Muy insatisfecho\"]:\n        problemas.append(\"los servicios adicionales\")\n\n    if not problemas:\n        mensaje = \"Gracias por su calificación. Seguiremos trabajando para brindarle la mejor experiencia.\"\n    else:\n        mensaje = \"Lamentamos que haya tenido problemas con \"\n        if len(problemas) == 1:\n            mensaje += problemas[0]\n        elif len(problemas) == 2:\n            mensaje += \" y \".join(problemas)\n        else:\n            mensaje += \", \".join(problemas[:-1]) + \" y \" + problemas[-1]\n        mensaje += \". Nos esforzaremos por mejorar estos aspectos para brindarle una mejor experiencia en el futuro.\"\n\n    return [{\"json\": {\"mensaje\": mensaje}}]  # Retornar en el formato correcto\n\n# Retornar el mensaje en el formato que n8n espera\nreturn generar_disculpa(respuestas)\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        200,
+        0
+      ],
+      "id": "97ab2a59-369b-4009-95c3-0155a9c493cc",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.microsoftExcel",
+      "typeVersion": 2.1,
+      "position": [
+        620,
+        0
+      ],
+      "id": "d120d4b2-336f-403d-bc09-7490931d66fd",
+      "name": "Microsoft Excel 365",
+      "credentials": {
+        "microsoftExcelOAuth2Api": {
+          "id": "rK2he6derHTsHkZW",
+          "name": "Microsoft Excel account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "workbook": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "worksheet": {
+          "__rl": true,
+          "value": "{00000000-0001-0000-0000-000000000000}",
+          "mode": "list",
+          "cachedResultName": "Hoja1"
+        },
+        "table": {
+          "__rl": true,
+          "value": "{309A81AC-8F97-4A7B-BC43-A740304ECDF7}",
+          "mode": "list",
+          "cachedResultName": "tabla1"
+        },
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "nombreUsuario",
+              "fieldValue": "={{ $('On form submission').item.json.Nombre }}"
+            },
+            {
+              "column": "mailUsuario",
+              "fieldValue": "={{ $('On form submission').item.json['Correo Electronico '] }}"
+            },
+            {
+              "column": "experienciaHotel",
+              "fieldValue": "={{ $('On form submission').item.json['¿Cómo calificaría su experiencia general en nuestro hotel?'] }}"
+            },
+            {
+              "column": "limpiezaHotel",
+              "fieldValue": "={{ $('On form submission').item.json['¿Qué tan satisfecho estuvo con la limpieza y comodidad de la habitación?'] }}"
+            },
+            {
+              "column": "atencionPersonal",
+              "fieldValue": "={{ $('On form submission').item.json['¿Cómo fue la atención del personal durante su estancia?'] }}"
+            },
+            {
+              "column": "serviciosAdicionales",
+              "fieldValue": "={{ $('On form submission').item.json['¿Qué tan satisfecho estuvo con los servicios adicionales (restaurante, piscina, gimnasio, etc.)?'] }}"
+            },
+            {
+              "column": "comentarios",
+              "fieldValue": "={{ $('On form submission').item.json['¿Qué mejoras sugeriría para que su próxima estancia sea aún mejor?'] }}"
+            },
+            {
+              "column": "fechaCreacion",
+              "fieldValue": "={{ $('On form submission').item.json.submittedAt }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.microsoftExcel",
+      "typeVersion": 2.1,
+      "position": [
+        840,
+        0
+      ],
+      "id": "226cfe7b-7bcf-4830-a6b9-88f959d5c9d3",
+      "name": "Microsoft Excel 3651",
+      "credentials": {
+        "microsoftExcelOAuth2Api": {
+          "id": "rK2he6derHTsHkZW",
+          "name": "Microsoft Excel account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Excel 365",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft Excel 365": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Excel 3651",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ea465476-97c2-46c0-8a33-93b82107251f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "35dc9771f46b09c7b124a0f9a1c42cb6f9685f4c33cec718232d6bfb7620acdf"
+  },
+  "id": "1fgtnEIZrAYMin4Z",
+  "tags": []
+}
